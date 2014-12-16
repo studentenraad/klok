@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>SR Clock</title>
+		
+		<link href="bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">>
+		<link href="style.css" rel="stylesheet">
+		
+		 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+	</head>
+	<body>
+		<div class="container">
+		
+		<div id="fullscreen">
+			<h1>Please press F11 for fullscreen!</h1>
+		</div>
+		
+		<div class="clock">
+			<div class="col">
+				<span class="d hour hour1"></span>
+			</div>
+			<div class="col">
+				<span class="d hour hour2"></span>
+			</div>
+			<div class="col">
+				<span class="c">:</span>
+			</div>
+			<div class="col">
+				<span class="d m m1"></span>
+			</div>
+			<div class="col">
+				<span class="d m m2"></span>
+			</div>
+		</div>
+		
+		<div class="row">
+			<form class="form-horizontal" role="form">
+				<div class="form-group">
+					<div class="col-md-2"></div>
+					<label for="timepick" class="col-md-6 control-label">You have time until</label>
+					<div class="col-md-2">
+						<input type="text" class="form-control input-lg" id="timepick">
+					</div>
+					<div class="col-md-2"></div>
+				</div>
+			</form>
+		</div>
+
+		
+		<div class="row"> 
+			<div class="col-md-2"></div>
+			<div class="col-md-8">
+				<hr>
+				<h1><strong>Don't forget to:</strong></h1>
+				<div id="tips">
+					<p><h2><strong>remove all electronic devices from your pocket</strong></h2></p>
+					<p><h2><strong>write your name on all pages (even scrap)</h2></strong><p>
+				</div>
+				<hr>
+			</div>
+			<div class="col-md-2"></div>
+		</div>
+		
+		<div class="footer navbar-fixed-bottom">
+			<p><h3><strong>Good luck with your exams!</strong></h3></p>
+			<img class="img-responsive center-block" src="sr.png"></img>
+		</div>
+	</div>
+		
+		<script>
+			(function() {
+			  var digits, hour1, hour2, minute1, minute2, period, second1, second2, updateClock;
+			  digits = $('.d');
+			  hour1 = $('.hour1');
+			  hour2 = $('.hour2');
+			  minute1 = $('.m1');
+			  minute2 = $('.m2');
+			  second1 = $('.s1');
+			  second2 = $('.s2');
+			  period = $('.per');
+
+			  updateClock = function() {
+				var d, h, m, p, s;
+				d = new Date();
+				h = d.getHours();
+				m = d.getMinutes();
+				s = d.getSeconds();
+
+				if (h >= 12) {
+				  p = 'pm';
+				} else {
+				  p = 'am';
+				}
+				if (h >= 13) {
+				  h = '' + h - 12;
+				} else {
+				  h = '' + h;
+				}
+				if (h < 10) {
+				  h = '0' + h;
+				} else {
+				  h = '' + h;
+				}
+				if (h === '00') {
+				  h = '12';
+				}
+				if (m < 10) {
+				  m = '0' + m;
+				} else {
+				  m = '' + m;
+				}
+				if (s < 10) {
+				  s = '0' + s;
+				} else {
+				  s = '' + s;
+				}
+				digits.removeClass('d0 d1 d2 d3 d4 d5 d6 d7 d8 d9');
+				hour1.addClass('d' + h.charAt(0));
+				hour2.addClass('d' + h.charAt(1));
+				minute1.addClass('d' + m.charAt(0));
+				minute2.addClass('d' + m.charAt(1));
+				second1.addClass('d' + s.charAt(0));
+				second2.addClass('d' + s.charAt(1));
+				period.removeClass('am pm');
+				return period.addClass(p);
+			  };
+
+			  updateClock();
+
+			  setInterval(updateClock, 250);
+			  
+			  checkFullscreen = function() {
+					console.log("innerHeight:" + window.innerHeight);
+					console.log("screenHeight:" + screen.height);
+					
+					if( window.innerHeight > (screen.height-10)) {
+						document.getElementById("fullscreen").style.display = 'none';
+					} else {
+						document.getElementById("fullscreen").style.display = '';
+					}
+			  };
+			  setInterval(checkFullscreen, 1000);
+
+			}).call(this);
+		</script>
+		
+		<script src="bootstrap/dist/js/bootstrap.min.js"></script>
+	</body>
+</html>
