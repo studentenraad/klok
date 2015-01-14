@@ -15,10 +15,6 @@
 	<body>
 		<div class="container">
 		
-		<div id="fullscreen">
-			<h1>Please press F11 for fullscreen!</h1>
-		</div>
-		
 		<div class="clock">
 			<div class="col">
 				<span class="d hour hour1"></span>
@@ -133,18 +129,6 @@
 
 			  setInterval(updateClock, 250);
 			  
-			  checkFullscreen = function() {
-					console.log("innerHeight:" + window.innerHeight);
-					console.log("screenHeight:" + screen.height);
-					
-					if( window.innerHeight > (screen.height-10)) {
-						document.getElementById("fullscreen").style.display = 'none';
-					} else {
-						document.getElementById("fullscreen").style.display = '';
-					}
-			  };
-			  setInterval(checkFullscreen, 1000);
-
 			}).call(this);
 		</script>
 		
