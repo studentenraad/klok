@@ -86,8 +86,11 @@
 				m = d.getMinutes();
 				s = d.getSeconds();
 				
-				h = '' + h;
-				
+				if (h <10) {
+					h = '0' + h;
+				} else {
+					h = '' + h;
+				}
 				if (m < 10) {
 				  m = '0' + m;
 				} else {
