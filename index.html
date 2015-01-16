@@ -85,25 +85,9 @@
 				h = d.getHours();
 				m = d.getMinutes();
 				s = d.getSeconds();
-
-				if (h >= 12) {
-				  p = 'pm';
-				} else {
-				  p = 'am';
-				}
-				if (h >= 13) {
-				  h = '' + h - 12;
-				} else {
-				  h = '' + h;
-				}
-				if (h < 10) {
-				  h = '0' + h;
-				} else {
-				  h = '' + h;
-				}
-				if (h === '00') {
-				  h = '12';
-				}
+				
+				h = '' + h;
+				
 				if (m < 10) {
 				  m = '0' + m;
 				} else {
